@@ -415,17 +415,46 @@ section.full-width { max-width: none; padding-left: 0; padding-right: 0; }
 }
 .work-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: var(--border); }
 .work-card-img {
-  aspect-ratio: 16/10;
+  aspect-ratio: 1/1;
   background: linear-gradient(135deg, var(--bg2), var(--bg3));
   position: relative;
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
+}
+.work-card-img-image {
+  object-fit: cover;
+  object-position: center;
 }
 .work-card-img-label {
   font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--border);
+}
+.status-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.status-badge.status-done {
+  background: rgba(76, 175, 80, 0.85);
+  color: #fff;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+.status-badge.status-in-process {
+  background: rgba(255, 152, 0, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 152, 0, 0.3);
 }
 .work-card-body { padding: 1.25rem 1.5rem 1.5rem; }
 .work-card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }

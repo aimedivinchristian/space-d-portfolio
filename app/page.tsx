@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { Github, Instagram, Facebook, Youtube, Figma, Camera, Film, Lightbulb, Terminal, Cpu, MessageCircle } from 'lucide-react';
+import { Github, Instagram, Facebook, Youtube, Figma, Camera, Film, Lightbulb, Terminal, Cpu } from 'lucide-react';
 import LoadingScreen from '@/components/LoadingScreen';
 import Navbar from '@/components/Navbar';
 import ContactForm from '@/components/ContactForm';
@@ -91,12 +91,37 @@ const EmbeddedLogo = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.414-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.427 0-2.834.356-4.06 1.031l-.291.16-.302-.04C6.281 6.95 5.52 6.7 4.8 6.7c-3.798 0-6.89 3.09-6.89 6.887 0 1.52.395 3.005 1.143 4.308l.213.408-.33.954c-.485 1.39-1.271 2.6-1.271 2.6s1.364-.095 2.926-.938l.412-.25.475.09c1.39.266 2.633.266 2.633.266 3.798 0 6.89-3.09 6.89-6.89 0-1.819-.75-3.54-2.124-4.757-1.374-1.218-3.199-1.89-5.125-1.89" />
+  </svg>
+);
+
+const SnapchatIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M12.065.217c4.697 0 7.454 3.253 7.454 7.454 0 1.158-.13 2.237-.522 3.236.956.13 1.652.696 1.913 1.652.26 1.087-.087 2.304-1.087 3.066.609.478 1.087 1.304 1.087 2.391 0 1.826-1.478 3.253-3.304 3.253-1.304 0-2.478-.609-3.253-1.565-.783.174-1.913.348-3.304.348-1.739 0-3.692-.348-5.344-.696-.348.956-1.304 1.565-2.478 1.565-1.826 0-3.304-1.427-3.304-3.253 0-1.087.478-1.913 1.087-2.391-.956-.783-1.304-1.978-1.087-3.066.261-.956.956-1.522 1.913-1.652-.392-.999-.522-2.078-.522-3.236C4.611 3.47 7.368.217 12.065.217zm0 1.044c-3.997 0-6.192 2.65-6.192 6.41 0 1.044.13 2.135.522 3.135a.667.667 0 0 1-.696.826c-.913.087-1.522.478-1.696 1.044-.174.696.087 1.565.826 2.13a.667.667 0 0 1 .174.956c-.348.696-.783 1.522-.783 2.304 0 1.478 1.044 2.739 2.478 2.739 1.044 0 1.913-.565 2.304-1.435a.667.667 0 0 1 .783-.348c1.478.348 3.31.652 4.87.652 1.522 0 3.31-.348 4.87-.74a.667.667 0 0 1 .783.348c.391.87 1.26 1.435 2.304 1.435 1.434 0 2.478-1.261 2.478-2.739 0-.783-.435-1.608-.783-2.304a.667.667 0 0 1 .174-.956c.739-.565.996-1.434.826-2.13-.174-.565-.783-.957-1.696-1.044a.667.667 0 0 1-.696-.826c.392-1 .522-2.091.522-3.135 0-3.76-2.195-6.41-6.192-6.41z" />
+  </svg>
+);
+
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.414-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.427 0-2.834.356-4.06 1.031l-.291.16-.302-.04C6.281 6.95 5.52 6.7 4.8 6.7c-3.798 0-6.89 3.09-6.89 6.887 0 1.52.395 3.005 1.143 4.308l.213.408-.33.954c-.485 1.39-1.271 2.6-1.271 2.6s1.364-.095 2.926-.938l.412-.25.475.09c1.39.266 2.633.266 2.633.266 3.798 0 6.89-3.09 6.89-6.89 0-1.819-.75-3.54-2.124-4.757-1.374-1.218-3.199-1.89-5.125-1.89" />
+  </svg>
+);
+
+const SnapchatIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M12.065.217c4.697 0 7.454 3.253 7.454 7.454 0 1.158-.13 2.237-.522 3.236.956.13 1.652.696 1.913 1.652.26 1.087-.087 2.304-1.087 3.066.609.478 1.087 1.304 1.087 2.391 0 1.826-1.478 3.253-3.304 3.253-1.304 0-2.478-.609-3.253-1.565-.783.174-1.913.348-3.304.348-1.739 0-3.692-.348-5.344-.696-.348.956-1.304 1.565-2.478 1.565-1.826 0-3.304-1.427-3.304-3.253 0-1.087.478-1.913 1.087-2.391-.956-.783-1.304-1.978-1.087-3.066.261-.956.956-1.522 1.913-1.652-.392-.999-.522-2.078-.522-3.236C4.611 3.47 7.368.217 12.065.217zm0 1.044c-3.997 0-6.192 2.65-6.192 6.41 0 1.044.13 2.135.522 3.135a.667.667 0 0 1-.696.826c-.913.087-1.522.478-1.696 1.044-.174.696.087 1.565.826 2.13a.667.667 0 0 1 .174.956c-.348.696-.783 1.522-.783 2.304 0 1.478 1.044 2.739 2.478 2.739 1.044 0 1.913-.565 2.304-1.435a.667.667 0 0 1 .783-.348c1.478.348 3.31.652 4.87.652 1.522 0 3.31-.348 4.87-.74a.667.667 0 0 1 .783.348c.391.87 1.26 1.435 2.304 1.435 1.434 0 2.478-1.261 2.478-2.739 0-.783-.435-1.608-.783-2.304a.667.667 0 0 1 .174-.956c.739-.565.996-1.434.826-2.13-.174-.565-.783-.957-1.696-1.044a.667.667 0 0 1-.696-.826c.392-1 .522-2.091.522-3.135 0-3.76-2.195-6.41-6.192-6.41z" />
+  </svg>
+);
+
 const PROJECTS = [
   {
     title: 'Moto Lens',
     desc: 'A visual journal blending motorcycle culture with street photography — cinematic edits, location stories, and raw journeys across Rwanda.',
     tags: ['Photography', 'Design', 'Editorial'],
-    emoji: '🏍️',
+    status: 'in-process' as const,
+    image: '/motolens.png',
     accent: '#e08a45',
     liveUrl: '#', // TODO: Add your Moto Lens live URL here
   },
@@ -104,9 +129,10 @@ const PROJECTS = [
     title: 'SpaceD Portfolio',
     desc: 'This very portfolio — built with Next.js, Three.js, and a custom design system. Dark/light themes, bilingual (EN/FR), email contact.',
     tags: ['Next.js', 'Three.js', 'TypeScript'],
-    emoji: '🚀',
+    status: 'done' as const,
+    image: '/spaced.png',
     accent: '#4aa8cc',
-    liveUrl: '#', // TODO: Add your SpaceD Portfolio live URL here
+    liveUrl: 'https://aimedivinchristian.vercel.app/', // TODO: Add your SpaceD Portfolio live URL here
   },
 ];
 
@@ -133,8 +159,9 @@ const SOCIALS = [
   { label: 'GitHub', icon: <Github size={20} />, href: 'https://github.com/aimedivinchristian', title: 'GitHub', color: '#0f1720', bg: 'transparent', border: 'var(--border)' },
   { label: 'Instagram', icon: <Instagram size={20} />, href: 'https://instagram.com/aimedivinchristian', title: 'Instagram', color: '#fff', bg: 'linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)', border: 'transparent' },
   { label: 'Facebook', icon: <Facebook size={20} />, href: 'https://facebook.com/naime.divinchristian', title: 'Facebook', color: '#fff', bg: '#1877F2', border: 'transparent' },
-  { label: 'WhatsApp', icon: <MessageCircle size={20} />, href: 'https://wa.me/250796977458', title: 'WhatsApp', color: '#fff', bg: '#25D366', border: 'transparent' },
+  { label: 'WhatsApp', icon: <WhatsAppIcon width={20} height={20} />, href: 'https://wa.me/250796977458', title: 'WhatsApp', color: '#fff', bg: '#25D366', border: 'transparent' },
   { label: 'YouTube', icon: <Youtube size={20} />, href: 'https://youtube.com/@aimedivinchristian', title: 'YouTube', color: '#fff', bg: '#FF0000', border: 'transparent' },
+  { label: 'Snapchat', icon: <SnapchatIcon width={20} height={20} />, href: 'https://snapchat.com/add/aimedivinchri', title: 'Snapchat', color: '#fff', bg: '#FFFC00', border: 'transparent' },
 ];
 
 export default function HomePage() {
@@ -257,8 +284,11 @@ export default function HomePage() {
                 className="work-card fade-up"
                 style={{ transitionDelay: `${i * 0.07}s` }}
               >
-                <div className="work-card-img" style={{ background: `linear-gradient(135deg, var(--bg2), var(--bg3))` }}>
-                  <span className="work-card-img-label" style={{ fontSize: '3.5rem' }}>{p.emoji}</span>
+                <div className="work-card-img">
+                  <Image src={p.image} alt={p.title} fill className="work-card-img-image" />
+                  <div className={`status-badge status-${p.status}`}>
+                    {p.status === 'done' ? '✓ Done' : '⏳ In Process'}
+                  </div>
                   <div style={{
                     position: 'absolute', bottom: 0, left: 0, right: 0, height: 4,
                     background: p.accent,
@@ -270,7 +300,7 @@ export default function HomePage() {
                   </div>
                   <h3>{p.title}</h3>
                   <p>{p.desc}</p>
-                  {p.liveUrl && p.liveUrl !== '#' && (
+                  {p.liveUrl && (
                     <a
                       href={p.liveUrl}
                       target="_blank"
