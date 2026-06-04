@@ -113,34 +113,14 @@ const SnapchatIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const PROJECTS = [
-{
-    title: 'BEREHYCO',
-    desc: 'Bureau d Etude et Réalisation d Electricité, Hydraulique et Construction. Construction, electrical works or water supply linker',
-    tags: ['HTML', 'CSS', 'Js','CMS'],
-    status: 'in-process' as const,
-    image: '/rehyco.png',
-    accent: '#f0ec2e',
-    liveUrl: 'https://rehyco.netlify.app', // TODO: Add your Moto Lens live URL here
-  },
-
   {
     title: 'Moto Lens',
     desc: 'A visual journal blending motorcycle culture with street photography — cinematic edits, location stories, and raw journeys across Rwanda.',
     tags: ['Photography', 'Design', 'Editorial'],
     status: 'in-process' as const,
     image: '/motolens.png',
-    accent: '#f32362',
+    accent: '#e08a45',
     liveUrl: '#', // TODO: Add your Moto Lens live URL here
-  },
-
-{ 
-    title: 'D > shell',
-    desc: 'An interactive learning platform teaching essential Linux commands and shell scripting. Navigate the command',
-    tags: ['Linux', 'Shell', 'Education', 'Tutorial'],
-    status: 'in-process' as const,
-    image: '/dshell.png',
-    accent: '#10b981',
-    liveUrl: '#', // TODO: Add your D > shell live URL here
   },
   {
     title: 'SpaceD Portfolio',
@@ -151,7 +131,23 @@ const PROJECTS = [
     accent: '#4aa8cc',
     liveUrl: 'https://aimedivinchristian.vercel.app/', // TODO: Add your SpaceD Portfolio live URL here
   },
- 
+  {
+    title: 'D > shell',
+    desc: 'An interactive learning platform teaching essential Linux commands and shell scripting. Navigate the command line like a pro with practical exercises, real-world scenarios, and step-by-step tutorials.',
+    tags: ['Linux', 'Shell', 'Education', 'Tutorial'],
+    status: 'in-process' as const,
+{
+    title: 'Moto Lens',
+    desc: 'A visual journal blending motorcycle culture with street photography — cinematic edits, location stories, and>
+    tags: ['Photography', 'Design', 'Editorial'],
+    status: 'in-process' as const,
+    image: '/motolens.png',
+    accent: '#e08a45',
+    liveUrl: '#', // TODO: Add your Moto Lens live URL here
+  },    image: '/dshell.png',
+    rehycaccent: '#10b981',
+    liveUrl: '#', // TODO: Add your D > shell live URL here
+  },
 ];
 
 const SKILLS = [
