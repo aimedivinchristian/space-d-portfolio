@@ -1,0 +1,78 @@
+// Prisma schema for the Space D portfolio admin dashboard.
+// Run `npx prisma generate` after editing, and `npx prisma db push` to sync the DB.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Singleton row holding all editable "site details" (hero + about + contact).
+// Text that differs by language is stored as an En/Fr pair.
+model Profile {
+  id            String @id @default("main")
+  heroName      String
+  heroTaglineEn String
+  heroTaglineFr String
+  heroSubEn     String @db.Text
+  heroSubFr     String @db.Text
+  aboutTitleEn  String
+  aboutTitleFr  String
+  aboutP1En     String @db.Text
+  aboutP1Fr     String @db.Text
+  aboutP2En     String @db.Text
+  aboutP2Fr     String @db.Text
+  aboutP3En     String @db.Text
+  aboutP3Fr     String @db.Text
+  phone         String
+  email         String
+  location      String
+  contactName   String
+  contactBlurbEn String @db.Text
+  contactBlurbFr String @db.Text
+  updatedAt     DateTime @updatedAt
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  title     String
+  descEn    String   @db.Text
+  descFr    String   @db.Text
+  tags      String[]
+  status    String   @default("in-process") // "done" | "in-process"
+  image     String
+  accent    String   @default("#4aa8cc")
+  liveUrl   String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  level     String // "Advanced" | "Intermediate" | ...
+  iconKey   String @default("code") // maps to an entry in lib/icons.tsx
+  sortOrder Int      @default(0)
+}
+
+model Social {
+  id        String   @id @default(cuid())
+  label     String
+  iconKey   String // maps to an entry in lib/icons.tsx
+  href      String
+  color     String   @default("#fff")
+  bg        String   @default("transparent")
+  border    String   @default("transparent")
+  sortOrder Int      @default(0)
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}

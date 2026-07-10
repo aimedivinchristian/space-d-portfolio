@@ -6,22 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@prisma/client": "^6.19.3",
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.8",
+    "bcryptjs": "^3.0.3",
     "framer-motion": "^11.2.10",
     "lucide-react": "^0.383.0",
     "next": "^14.2.0",
+    "next-auth": "^4.24.14",
     "nodemailer": "^6.9.13",
+    "prisma": "^6.19.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-intersection-observer": "^9.10.3",
     "three": "^0.165.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
@@ -29,6 +41,7 @@
     "@types/three": "^0.165.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.0",
+    "tsx": "^4.23.0",
     "typescript": "^5"
   }
 }
