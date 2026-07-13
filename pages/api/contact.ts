@@ -23,8 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // For Gmail: enable 2FA, generate an App Password, use it as SMTP_PASS.
   // ─────────────────────────────────────────────────────────────────────────
 
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    return res.status(500).json({ error: 'SMTP configuration is missing. Check SMTP_HOST, SMTP_USER, and SMTP_PASS.' });
+  }
+
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
     secure: false,
     auth: {
@@ -57,6 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Email error:', err);
-    return res.status(500).json({ error: 'Failed to send email' });
+    const message = err instanceof Error ? err.message : 'Failed to send email';
+    return res.status(500).json({ error: message });
   }
 }

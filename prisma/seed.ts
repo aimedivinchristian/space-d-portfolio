@@ -15,7 +15,7 @@ const PROJECTS = [
     status: 'in-process',
     image: '/rehyco.png',
     accent: '#f0ec2e',
-    liveUrl: 'https://rehyco.netlify.app',
+    liveUrl: 'https://berehyco.vercel.app',
     sortOrder: 0,
   },
   {
@@ -89,8 +89,8 @@ const SOCIALS = [
 
 async function main() {
   // ── Admin user ──
-  const email = process.env.ADMIN_EMAIL || 'admin@spaced.dev';
-  const password = process.env.ADMIN_PASSWORD || 'changeme123';
+  const email = process.env.ADMIN_EMAIL || 'aimedivinchristian@gmail.com';
+  const password = process.env.ADMIN_PASSWORD || 'localhost1511';
   const passwordHash = await bcrypt.hash(password, 10);
   await prisma.adminUser.upsert({
     where: { email },

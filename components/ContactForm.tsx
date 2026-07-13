@@ -1,17 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
+import { useState } from 'react';
 import { translations, Lang } from '@/lib/translations';
 
 export default function ContactForm({ lang }: { lang: Lang }) {
   const t = translations[lang].contact;
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-
-  // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
-  }, []);
+  const [message, setMessage] = useState('');
 
   const update = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -19,22 +14,32 @@ export default function ContactForm({ lang }: { lang: Lang }) {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    setMessage('');
+
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        {
-          to_email: 'aimedivinchristian@gmail.com',
-          from_name: form.name,
-          from_email: form.email,
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
           message: form.message,
-        }
-      );
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
+      setMessage(t.success);
     } catch (err) {
-      console.error('EmailJS error:', err);
+      console.error('Contact form error:', err);
       setStatus('error');
+      setMessage(err instanceof Error ? err.message : t.error);
     }
   };
 
@@ -65,8 +70,8 @@ export default function ContactForm({ lang }: { lang: Lang }) {
         />
       </div>
 
-      {status === 'success' && <p className="form-status success">{t.success}</p>}
-      {status === 'error' && <p className="form-status error">{t.error}</p>}
+      {status === 'success' && message && <p className="form-status success">{message}</p>}
+      {status === 'error' && message && <p className="form-status error">{message}</p>}
 
       <button
         type="submit"
